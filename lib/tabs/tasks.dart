@@ -7,26 +7,32 @@ class TaskTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         CalendarTimeline(
           initialDate: DateTime.now(),
           firstDate: DateTime.now().subtract(Duration(days: 356)),
-          lastDate: DateTime.now().add(Duration(days:365 )),
+          lastDate: DateTime.now().add(Duration(days: 365)),
           onDateSelected: (date) => print(date),
           leftMargin: 20,
           monthColor: Colors.black,
           dayColor: Colors.blue,
-
           activeDayColor: Colors.white,
           activeBackgroundDayColor: Colors.blue,
-          selectableDayPredicate: (date) => date.day !=0,
+          selectableDayPredicate: (date) => date.day != 0,
           locale: 'en_ISO',
         ),
         SizedBox(
           height: 34,
         ),
-        TaskItem(),
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return TaskItem();
+            },
+            itemCount: 60,
+          ),
+        ),
       ],
     );
   }

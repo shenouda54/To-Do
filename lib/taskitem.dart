@@ -19,10 +19,37 @@ class TaskItem extends StatelessWidget {
             height: 90,
             width: 2,
           ),
+          SizedBox(
+            width: 18,
+          ),
           Column(
             children: [
-              Text("data")
+              Text(
+                "Text Title ",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "Text Description ",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+              ),
             ],
+          ),
+          Spacer(),
+          IconButton(
+            onPressed: () {},
+            padding: EdgeInsets.zero,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              minimumSize: Size(80, 40),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            icon: Icon(
+              Icons.done,
+              size: 30,
+              color: Colors.black,
+            ),
           ),
         ],
       ),
