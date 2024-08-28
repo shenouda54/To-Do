@@ -4,18 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:todo/firebase_functions.dart';
 import 'package:todo/taskitem.dart';
 
-class TaskTab extends StatelessWidget {
-  const TaskTab({super.key});
+class TaskTab extends StatefulWidget {
+   TaskTab({super.key});
+
+  @override
+  State<TaskTab> createState() => _TaskTabState();
+}
+
+class _TaskTabState extends State<TaskTab> {
+  DateTime dateTime=DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CalendarTimeline(
-          initialDate: DateTime.now(),
+          initialDate: dateTime,
           firstDate: DateTime.now().subtract(Duration(days: 356)),
           lastDate: DateTime.now().add(Duration(days: 365)),
-          onDateSelected: (date) => print(date),
+          onDateSelected: (date){
+            dateTime=date;
+            setState(() {
+
+            });
+        },
           leftMargin: 20,
           monthColor: Colors.black,
           dayColor: Colors.blue,
@@ -29,7 +41,7 @@ class TaskTab extends StatelessWidget {
         ),
         Expanded(
            child: StreamBuilder(
-            stream: FirebaseFunction.getTasks(),
+            stream: FirebaseFunction.getTasks(dateTime),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -44,7 +56,7 @@ class TaskTab extends StatelessWidget {
               }
               var  tasks = snapshot.data?.docs.map((e)=> e.data()).toList();
 
-              if(tasks?.isEmpty?? true){
+              if(tasks?.isEmpty ?? true){
                 return Text("No Tasks");
               }
               return ListView.builder(
