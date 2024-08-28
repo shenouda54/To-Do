@@ -40,7 +40,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             decoration: InputDecoration(
               labelText: "Title",
               border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
             ),
           ),
           SizedBox(
@@ -51,7 +51,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             decoration: InputDecoration(
               labelText: "Description",
               border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
             ),
           ),
           SizedBox(
@@ -84,14 +84,19 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             width: double.infinity,
             child: ElevatedButton(
                 onPressed: () {
+                  print("hereeee ${DateUtils.dateOnly(selectedDate)}");
                   TaskModel model = TaskModel(
                     title: titleController.text,
                     description: descriptionController.text,
-                    date: selectedDate.millisecondsSinceEpoch,
+                    date:
+                        DateUtils.dateOnly(selectedDate)
+                            .millisecondsSinceEpoch
                   );
-                  FirebaseFunction.addTask(model).then((value){
-                    Navigator.pop(context);
-                  },);
+                  FirebaseFunction.addTask(model).then(
+                    (value) {
+                      Navigator.pop(context);
+                    },
+                  );
                 },
                 child: Text(
                   "Add",

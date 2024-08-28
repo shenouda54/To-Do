@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:todo/task_model.dart';
 
 class FirebaseFunction {
@@ -7,10 +8,12 @@ class FirebaseFunction {
         .collection("Tasks")
         .withConverter<TaskModel>(
       fromFirestore: (snapshot, _) {
-        return TaskModel.fromJson(snapshot.data()!);
+        //database (Map)
+        return TaskModel.fromJson(snapshot.data()!); //return model
       },
       toFirestore: (taskModel, _) {
-        return taskModel.toJson();
+        //model
+        return taskModel.toJson(); //return (Map) and go firebase
       },
     );
   }
@@ -22,8 +25,13 @@ class FirebaseFunction {
     docRef.set(model);
   }
 
-  static Stream<QuerySnapshot<TaskModel>> getTasks() {
+  static Stream<QuerySnapshot<TaskModel>> getTasks(DateTime dateTime) {
     var collection = gettasksCollection();
-    return collection.snapshots();
+    return collection
+        .where("data",
+            isEqualTo: DateUtils.dateOnly(dateTime).millisecondsSinceEpoch)
+        .snapshots();
   }
 }
+
+
