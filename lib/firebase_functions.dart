@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/task_model.dart';
 
+
 class FirebaseFunction {
   static CollectionReference<TaskModel> gettasksCollection() {
     return FirebaseFirestore.instance
@@ -28,7 +29,7 @@ class FirebaseFunction {
   static Stream<QuerySnapshot<TaskModel>> getTasks(DateTime dateTime) {
     var collection = gettasksCollection();
     return collection
-        .where("data",
+        .where("date",
             isEqualTo: DateUtils.dateOnly(dateTime).millisecondsSinceEpoch)
         .snapshots();
   }
