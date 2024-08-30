@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/task_model.dart';
 
+
 class FirebaseFunction {
   static CollectionReference<TaskModel> gettasksCollection() {
     return FirebaseFirestore.instance
