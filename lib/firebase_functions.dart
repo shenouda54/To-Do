@@ -33,6 +33,13 @@ class FirebaseFunction {
             isEqualTo: DateUtils.dateOnly(dateTime).millisecondsSinceEpoch)
         .snapshots();
   }
-}
 
+  static Future<void> deleteTask(String id) {
+    return gettasksCollection().doc(id).delete();
+  }
+
+  static Future<void> updateTask(TaskModel model) {
+    return gettasksCollection().doc(model.id).update(model.toJson());
+  }
+}
 
