@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/task_model.dart';
 
-
 class FirebaseFunction {
   static CollectionReference<TaskModel> gettasksCollection() {
     return FirebaseFirestore.instance
@@ -33,6 +32,13 @@ class FirebaseFunction {
             isEqualTo: DateUtils.dateOnly(dateTime).millisecondsSinceEpoch)
         .snapshots();
   }
-}
 
+  static Future<void> deleteTask(String id) {
+    return gettasksCollection().doc(id).delete();
+  }
+
+  static Future<void> updateTask(TaskModel model) {
+    return gettasksCollection().doc(model.id).update(model.toJson());
+  }
+}
 
