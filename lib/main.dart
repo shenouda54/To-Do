@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/firebase_options.dart';
 import 'package:todo/home.dart';
 import 'package:todo/login/login.dart';
 import 'package:todo/login/signup.dart';
+import 'package:todo/providers/my_provider.dart';
 import 'package:todo/splash.dart';
 
 void main() async {
@@ -13,7 +15,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseFirestore.instance.enableNetwork();
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => MyProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +28,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return MaterialApp(
       routes: {
         SplashScreen.routeName: (context) => SplashScreen(),
@@ -28,7 +36,9 @@ class MyApp extends StatelessWidget {
         SignupScreen.routeName: (context) => SignupScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
       },
-      initialRoute: LoginScreen.routeName,
+      initialRoute: pro.firebaseUser != null
+          ? HomeScreen.routeName
+          : LoginScreen.routeName,
       debugShowCheckedModeBanner: false,
     );
   }
