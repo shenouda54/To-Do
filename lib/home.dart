@@ -1,6 +1,10 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/add_task_bottomsheet.dart';
+import 'package:todo/login/login.dart';
+import 'package:todo/providers/my_provider.dart';
 import 'package:todo/tabs/settings.dart';
 import 'package:todo/tabs/tasks.dart';
 
@@ -18,17 +22,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
+    // String label=ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       extendBody: true,
       backgroundColor: Color(0xffDFECDB),
       appBar: AppBar(
         toolbarHeight: 100,
-        title: const Text(
-          "TO DO",
+        title: Text(
+          "Hello ${pro.userModel?.userName}",
           style: TextStyle(
             fontSize: 25,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushNamed(context, LoginScreen.routeName);
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
