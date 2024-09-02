@@ -8,6 +8,7 @@ import 'package:todo/login/login.dart';
 import 'package:todo/login/signup.dart';
 import 'package:todo/providers/my_provider.dart';
 import 'package:todo/splash.dart';
+import 'package:todo/tabs/edit_task_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (context) => LoginScreen(),
         SignupScreen.routeName: (context) => SignupScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
+        EditTaskScreen.routeName: (context) => EditTaskScreen(),
       },
       initialRoute: pro.firebaseUser != null
           ? HomeScreen.routeName

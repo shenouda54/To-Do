@@ -4,11 +4,11 @@ import 'package:todo/firebase_functions.dart';
 import 'package:todo/models/user_model.dart';
 
 class MyProvider extends ChangeNotifier {
-  late User firebaseUser;
+  late User? firebaseUser;
    UserModel? userModel;
 
   MyProvider() {
-    firebaseUser = FirebaseAuth.instance.currentUser!;
+    firebaseUser = FirebaseAuth.instance.currentUser;
     if(firebaseUser !=null){
       initUser();
     }
