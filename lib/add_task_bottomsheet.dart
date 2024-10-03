@@ -83,6 +83,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             height: 15,
           ),
           Container(
+
             width: double.infinity,
             child: ElevatedButton(
                 onPressed: () {
@@ -101,13 +102,16 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     },
                   );
                 },
+
                 child: Text(
                   "Add",
                   style: TextStyle(
+                    color: Colors.black,
                     fontSize: 20,
                   ),
-                )),
-          )
+                ),
+            ),
+          ),
         ],
       ),
     );
