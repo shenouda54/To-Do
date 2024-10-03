@@ -28,10 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
       extendBody: true,
       backgroundColor: Color(0xffDFECDB),
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         toolbarHeight: 100,
         title: Text(
           "Hello ${pro.userModel?.userName}",
           style: TextStyle(
+            color: Colors.white,
             fontSize: 25,
           ),
         ),
@@ -41,7 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
               FirebaseAuth.instance.signOut();
               Navigator.pushNamed(context, LoginScreen.routeName);
             },
-            icon: Icon(Icons.logout),
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
@@ -61,9 +66,11 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           );
         },
+        backgroundColor: Colors.blue,
         child: Icon(
           Icons.add,
           size: 33,
+          color: Colors.white,
         ),
       ),
       bottomNavigationBar: BottomAppBar(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:todo/firebase_functions.dart';
+
 import 'package:todo/login/login.dart';
 
 class SignupScreen extends StatelessWidget {

@@ -20,6 +20,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     return Scaffold(
       backgroundColor: Color(0xffDFECDB),
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         toolbarHeight: 130,
         title: Text(
           "To Do List",
@@ -103,6 +104,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                 Spacer(),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
                     padding: EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: 60,
@@ -115,6 +117,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                   child: Text(
                     "Save Changes",
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
                     ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SettingTub extends StatelessWidget {
@@ -11,7 +10,6 @@ class SettingTub extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           SizedBox(
             height: 120,
           ),
@@ -19,17 +17,17 @@ class SettingTub extends StatelessWidget {
           SizedBox(
             height: 12,
           ),
-          InkWell(onTap: () {
-
-            // showModalBottomSheet(
-            //   isScrollControlled: true,
-            //   context: context,
-            //   builder: (context) {
-            //     return ThemeBottomSheet(
-            //     );
-            //   },
-            // );
-          },
+          InkWell(
+            onTap: () {
+              // showModalBottomSheet(
+              //   isScrollControlled: true,
+              //   context: context,
+              //   builder: (context) {
+              //     return ThemeBottomSheet(
+              //     );
+              //   },
+              // );
+            },
             child: Container(
               padding: EdgeInsets.all(12),
               width: double.infinity,
@@ -48,7 +46,6 @@ class SettingTub extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-
               // showModalBottomSheet(
               //   isScrollControlled: true,
               //   context: context,
@@ -59,7 +56,6 @@ class SettingTub extends StatelessWidget {
               // );
             },
             child: Container(
-
               padding: EdgeInsets.all(12),
               width: double.infinity,
               decoration: BoxDecoration(
