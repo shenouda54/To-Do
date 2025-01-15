@@ -28,7 +28,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(150.0),
         child: Card(
           child: Padding(
             padding: const EdgeInsets.all(15.0),

@@ -14,10 +14,11 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider=Provider.of<MyProvider>(context);
+    var provider = Provider.of<MyProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login Screen'),
+        title: const Text('       Login Screen'),
+        automaticallyImplyLeading: false,
       ),
       bottomNavigationBar: InkWell(
         onTap: () {
@@ -84,7 +85,6 @@ class LoginScreen extends StatelessWidget {
                               child: Text("Okey!!"),
                             ),
                           ],
-
                         ),
                       );
                     },
@@ -96,7 +96,6 @@ class LoginScreen extends StatelessWidget {
                         (route) => false,
                         arguments: label,
                       );
-
                     },
                   );
                 },
